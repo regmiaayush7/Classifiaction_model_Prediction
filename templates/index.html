@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stroke Prediction</title>
+</head>
+<body>
+    <h1>Stroke Prediction</h1>
+    <form action="/predict" method="post">
+        Age: <input type="text" name="age"><br>
+        Hypertension: 
+        <select name="hypertension">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select><br>
+        Heart Disease: 
+        <select name="heart_disease">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select><br>
+        Avg Glucose Level: <input type="text" name="avg_glucose_level"><br>
+        BMI: <input type="text" name="bmi"><br>
+        Gender: 
+        <select name="gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select><br>
+        Ever Married: 
+        <select name="ever_married">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select><br>
+        Work Type: 
+        <select name="work_type">
+            <option value="Never_worked">Never worked</option>
+            <option value="Private">Private</option>
+            <option value="Self-employed">Self-employed</option>
+            <option value="Govt_job">Govt job</option>
+            <option value="children">children</option>
+        </select><br>
+        Residence Type: 
+        <select name="Residence_type">
+            <option value="Urban">Urban</option>
+            <option value="Rural">Rural</option>
+        </select><br>
+        Smoking Status: 
+        <select name="smoking_status">
+            <option value="never smoked">never smoked</option>
+            <option value="formerly smoked">formerly smoked</option>
+            <option value="smokes">smokes</option>
+        </select><br>
+        <input type="submit" value="Predict">
+    </form>
+    {% if prediction_text %}
+        <h2>{{ prediction_text }}</h2>
+    {% endif %}
+</body>
+</html>
