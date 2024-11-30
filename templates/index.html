@@ -4,57 +4,138 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stroke Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding-top: 20px;
+        }
+        .container {
+            margin: 8px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            color: #4caf50;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        input[type="text"], select {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .return-button{
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Stroke Prediction</h1>
-    <form action="/predict" method="post">
-        Age: <input type="text" name="age"><br>
-        Hypertension: 
-        <select name="hypertension">
-            <option value="0">No</option>
-            <option value="1">Yes</option>
-        </select><br>
-        Heart Disease: 
-        <select name="heart_disease">
-            <option value="0">No</option>
-            <option value="1">Yes</option>
-        </select><br>
-        Avg Glucose Level: <input type="text" name="avg_glucose_level"><br>
-        BMI: <input type="text" name="bmi"><br>
-        Gender: 
-        <select name="gender">
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
-        </select><br>
-        Ever Married: 
-        <select name="ever_married">
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
-        </select><br>
-        Work Type: 
-        <select name="work_type">
-            <option value="Never_worked">Never worked</option>
-            <option value="Private">Private</option>
-            <option value="Self-employed">Self-employed</option>
-            <option value="Govt_job">Govt job</option>
-            <option value="children">children</option>
-        </select><br>
-        Residence Type: 
-        <select name="Residence_type">
-            <option value="Urban">Urban</option>
-            <option value="Rural">Rural</option>
-        </select><br>
-        Smoking Status: 
-        <select name="smoking_status">
-            <option value="never smoked">never smoked</option>
-            <option value="formerly smoked">formerly smoked</option>
-            <option value="smokes">smokes</option>
-        </select><br>
-        <input type="submit" value="Predict">
-    </form>
-    {% if prediction_text %}
-        <h2>{{ prediction_text }}</h2>
-    {% endif %}
+    <div class="container">
+        <h1>Stroke Prediction</h1>
+        <form action="/predict" method="post">
+            <label for="age">Age:</label>
+            <input type="text" id="age" name="age" required>
+            <label for="hypertension">Hypertension:</label>
+            <select id="hypertension"s name="hypertension" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+
+            <label for="heart_disease">Heart Disease:</label>
+            <select id="heart_disease" name="heart_disease" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+
+            <label for="avg_glucose_level">Avg Glucose Level:</label>
+            <input type="text" id="avg_glucose_level" name="avg_glucose_level" required>
+
+            <label for="bmi">BMI:</label>
+            <input type="text" id="bmi" name="bmi" required>
+
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <label for="ever_married">Ever Married:</label>
+            <select id="ever_married" name="ever_married" required>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+
+            <label for="work_type">Work Type:</label>
+            <select id="work_type" name="work_type" required>
+                <option value="Never_worked">Never worked</option>
+                <option value="Private">Private</option>
+                <option value="Self-employed">Self-employed</option>
+                <option value="Govt_job">Govt job</option>
+                <option value="children">children</option>
+            </select>
+
+            <label for="Residence_type">Residence Type:</label>
+            <select id="Residence_type" name="Residence_type" required>
+                <option value="Urban">Urban</option>
+                <option value="Rural">Rural</option>
+            </select>
+
+            <label for="smoking_status">Smoking Status:</label>
+            <select id="smoking_status" name="smoking_status" required>
+                <option value="never smoked">never smoked</option>
+                <option value="formerly smoked">formerly smoked</option>
+                <option value="smokes">smokes</option>
+            </select>
+
+            <input type="submit" value="Predict">
+        </form>
+        {% if prediction_text %}
+            <div class="result">
+                <h2>{{ prediction_text }}</h2>
+                <button class="return-button" onclick="window.location.href='/'">Return to Home</button>
+            </div>
+        {% endif %}
+    </div>
 </body>
 </html>
+
