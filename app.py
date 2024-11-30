@@ -25,24 +25,28 @@ def predict():
     try:
         # Get data from form
         data = {
-            'age': float(request.form['age']),
-            'hypertension': int(request.form['hypertension']),
-            'heart_disease': int(request.form['heart_disease']),
-            'avg_glucose_level': float(request.form['avg_glucose_level']),
-            'bmi': float(request.form['bmi']),
-            'gender_Male': int(request.form['gender'] == 'Male'),
-            'gender_Other': int(request.form['gender'] == 'Other'),
-            'ever_married_Yes': int(request.form['ever_married'] == 'Yes'),
-            'work_type_Never_worked': int(request.form['work_type'] == 'Never_worked'),
-            'work_type_Private': int(request.form['work_type'] == 'Private'),
-            'work_type_Self-employed': int(request.form['work_type'] == 'Self-employed'),
-            'work_type_children': int(request.form['work_type'] == 'children'),
-            'Residence_type_Urban': int(request.form['Residence_type'] == 'Urban'),
-            'smoking_status_formerly smoked': int(request.form['smoking_status'] == 'formerly smoked'),
-            'smoking_status_never smoked': int(request.form['smoking_status'] == 'never smoked'),
-            'smoking_status_smokes': int(request.form['smoking_status'] == 'smokes')
+        'age': float(request.form['age']),
+        'hypertension': int(request.form['hypertension']),
+        'heart_disease': int(request.form['heart_disease']),
+        'avg_glucose_level': float(request.form['avg_glucose_level']),
+        'bmi': float(request.form['bmi']),
+        'gender_Male': int(request.form['gender'] == 'Male'),
+        'gender_Female': int(request.form['gender'] == 'Female'),
+        'gender_Other': int(request.form['gender'] == 'Other'),
+        'ever_married_Yes': int(request.form['ever_married'] == 'Yes'),
+        'ever_married_No': int(request.form['ever_married'] == 'No'),
+        'work_type_Never_worked': int(request.form['work_type'] == 'Never_worked'),
+        'work_type_Private': int(request.form['work_type'] == 'Private'),
+        'work_type_Self-employed': int(request.form['work_type'] == 'Self-employed'),
+        'work_type_children': int(request.form['work_type'] == 'children'),
+        'Residence_type_Urban': int(request.form['Residence_type'] == 'Urban'),
+        'Residence_type_Rural': int(request.form['Residence_type'] == 'Rural'),
+        'smoking_status_formerly smoked': int(request.form['smoking_status'] == 'formerly smoked'),
+        'smoking_status_never smoked': int(request.form['smoking_status'] == 'never smoked'),
+        'smoking_status_smokes': int(request.form['smoking_status'] == 'smokes')
         }
-        
+
+
         df = pd.DataFrame(data, index=[0])
 
         # Standardize numerical variables
